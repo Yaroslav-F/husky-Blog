@@ -1,0 +1,12 @@
+.ui.fixed.inverted.menu
+  .ui.container
+    = link_to "Home", root_path, class: "item #{'active' if current_page?(root_path)}"
+    = link_to "Posts", posts_path, class: "item #{'active' if current_page?(posts_path)}"
+    = link_to "Authors", users_path, class: "item #{'active' if current_page?(users_path)}"
+    = link_to "Developer", page_path(:about), class: "item #{'active' if current_page?(page_path(:about))}"
+    .right.item
+      - if user_signed_in?
+        = link_to "Log out", destroy_user_session_path, method: :delete, class: "ui inverted button"
+      - else
+        = link_to "Log In", new_user_session_path, class: "ui inverted button"
+        = link_to "Sign Up", new_user_registration_path, class: "ui inverted button"

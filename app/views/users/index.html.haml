@@ -1,0 +1,10 @@
+.ui.text.container.main-container
+  .ui.horizontal.section.divider Authors
+  .ui.vertically.divided.grid
+    - @users.each do |user_row|
+      .row
+        - user_row.each do |user|
+          .four.wide.column.ui.center.aligned
+            = image_tag user.avatar
+            %b= user.full_name
+            %i= user.email

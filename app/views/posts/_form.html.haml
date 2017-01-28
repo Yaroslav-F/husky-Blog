@@ -1,0 +1,8 @@
+= simple_form_for @post, html: { class: "ui form" } do |f|
+  .field
+    %label Title
+    = f.input :header, label: false
+  .field
+    %label Body
+    = f.cktext_area :body, label: false, ckeditor: { toolbar: 'mini', removeDialogTabs: 'link:target;link:upload;link:advanced;image:Link;image:advanced' }
+  = f.submit "Save", class: "ui button secondary"

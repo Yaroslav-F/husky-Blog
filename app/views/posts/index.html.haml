@@ -1,0 +1,13 @@
+.ui.vertical.stripe.segment.posts-list.main-container
+  .ui.text.container
+    %h3.ui.dividing.header All Posts
+    - @posts.each do |post|
+      %h3.ui.header= post.header
+      %i= post.info
+      %p= truncate(post.body.html_safe, :length => 230, omission: "...", :escape => false)
+      = link_to "Read More", post_path(post), class: "ui large secondary button"
+
+  .ui.text.container
+    - if user_signed_in?
+      %hr
+      = link_to "New Post", new_post_path, class: "ui large primary button"

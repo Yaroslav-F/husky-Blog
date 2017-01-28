@@ -1,0 +1,16 @@
+.ui.container.main-container.text
+  %h1.ui.dividing.header Profile
+  %table.ui.definition.table.celled
+    %tbody
+      %tr
+        %td Avatar
+        %td First Name
+        %td Last Name
+        %td Email
+      %tr
+        %td= image_tag @user.avatar_url, width: 100
+        %td= @user.first_name
+        %td= @user.last_name
+        %td= @user.email
+
+  = link_to "Edit Profile", edit_user_path(@user), class: "ui button large blue"

@@ -1,0 +1,21 @@
+= render "shared/outer_header"
+.ui.vertical.stripe.quote.segment
+  .ui.equal.width.stackable.internally.celled.grid
+    .center.aligned.row
+      .column
+        %h3 "The best thing about a man is his dog."
+        %p - French Proverb
+      .column
+        %h3 "The average dog is a nicer person than the average person."
+        %p
+          %img.ui.avatar.image{:src => "http://www.eonline.com/eol_images/Entire_Site/2011827/300.rooney.lc.092711.jpg"}
+            %b Andy Rooney
+            \, an American radio and television writer
+.ui.vertical.stripe.segment.posts-caption
+  .ui.text.container
+    %h4.ui.horizontal.header.divider
+      = link_to "Latest Posts", posts_path
+    - @posts.each do |post|
+      %h3.ui.header= post.header
+      %p= truncate(post.body.html_safe, :length => 230, omission: "...", :escape => false)
+      = link_to "Read More", post_path(post), class: "ui large button"

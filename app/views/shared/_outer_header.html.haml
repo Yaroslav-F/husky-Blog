@@ -1,0 +1,71 @@
+/ Following Menu
+.ui.large.top.fixed.menu.transition.hidden
+  .ui.container
+    = link_to "Home", root_path, class: "item active"
+    = link_to "Posts", posts_path, class: "item"
+    = link_to "Authors", users_path, class: "item"
+    = link_to "Developer", page_path(:about), class: "item"
+    .right.menu
+      .item
+        - if user_signed_in?
+          %a.ui.dropdown.item
+            Dropdown
+            %i.dropdown.icon
+            .menu.ui.transition.hidden
+              .item Action
+              .item Another action
+              .item Something else here
+              .ui.divider
+              = link_to "Log out", destroy_user_session_path, method: :delete, class: "item"
+        - else
+          = link_to "Log In", new_user_session_path, class: "ui button"
+          = link_to "Sign Up", new_user_registration_path, class: "ui button"
+      .item
+        %a.ui.primary.button Sign Up
+/ Sidebar Menu
+.ui.vertical.inverted.sidebar.menu.left
+  = link_to "Home", root_path, class: "item active"
+  = link_to "Posts", posts_path, class: "item"
+  = link_to "Authors", users_path, class: "item"
+  = link_to "Developer", page_path(:about), class: "item"
+  - if user_signed_in?
+    %a.ui.dropdown.item
+      Dropdown
+      %i.dropdown.icon
+      .menu.ui.transition.hidden
+        .item Action
+        .item Another action
+        .item Something else here
+        .ui.divider
+        = link_to "Log out", destroy_user_session_path, method: :delete, class: "item"
+  - else
+    = link_to "Log In", new_user_session_path, class: "item"
+    = link_to "Sign Up", new_user_registration_path, class: "item"
+.ui.inverted.vertical.masthead.center.aligned.segment.husky-caption
+  .ui.container
+    .ui.large.secondary.inverted.pointing.menu.husky-navbar
+      %a.toc.item
+        %i.sidebar.icon
+      = link_to "Home", root_path, class: "item active"
+      = link_to "Posts", posts_path, class: "item"
+      = link_to "Authors", users_path, class: "item"
+      = link_to "Developer", page_path(:about), class: "item"
+      .right.item
+        - if user_signed_in?
+          .ui.simple.dropdown.item
+            = "#{current_user.first_name} #{current_user.last_name}"
+            %i.dropdown.icon
+            .menu
+              = link_to "Profile", user_path(current_user), class: "item"
+              .ui.divider
+              = link_to "Log out", destroy_user_session_path, method: :delete, class: "item"
+        - else
+          = link_to "Log In", new_user_session_path, class: "ui inverted button"
+          = link_to "Sign Up", new_user_registration_path, class: "ui inverted button"
+  .ui.text.container
+    %h1.ui.inverted.header
+      Huskies!
+    %h2 Why do we love them?
+    = link_to posts_path, class: "ui huge button primary" do
+      Browse Answers
+      %i.right.arrow.icon

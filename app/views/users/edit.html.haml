@@ -1,0 +1,21 @@
+.ui.container.main-container.text
+  %h1.ui.dividing.header Edit profile
+  = simple_form_for @user, html: { class: "ui form" } do |f|
+    .field
+      = label_tag "Name"
+      .two.fields
+        .field
+          = f.input :first_name, placeholder: "First Name", label: false
+        .field
+          = f.input :last_name, placeholder: "Last Name", label: false
+    .field
+      = image_tag @user.avatar.url, width: 100 if @user.avatar
+      = f.input :avatar, label: false
+    .field
+      = f.input :email, label: false, placeholder: "Email"
+    .field
+      = f.input :password, label: false, placeholder: "Password"
+    .field
+      = f.input :password_confirmation, label: false, placeholder: "Password Confirmation"
+
+    = f.submit "Save", class: "ui button secondary"

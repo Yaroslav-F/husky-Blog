@@ -1,0 +1,35 @@
+%html
+  %head
+    %title= page_title
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body{ class: "#{body_class}" }
+    = render "shared/inner_header" unless current_page?(root_path)
+
+    = semantic_flash
+
+    / Page Contents
+    .pusher
+      = yield
+
+      .ui.inverted.vertical.footer.segment
+        .ui.container
+          .ui.stackable.inverted.divided.equal.height.stackable.grid
+            .three.wide.column
+              %h4.ui.inverted.header Navigation
+              .ui.inverted.link.list
+                = link_to "Home", root_path, class: "item"
+                = link_to "Posts", posts_path, class: "item"
+                = link_to "Authors", users_path, class: "item"
+                = link_to "Developer", page_path(:about), class: "item"
+            .three.wide.column
+              %h4.ui.inverted.header About
+              .ui.inverted.link.list
+                / %a.item{:href => "http://semantic-ui.com/examples/homepage.html#"} Sitemap
+                = link_to "Contact Developer", "http://yaroslavfilyk.herokuapp.com/#contact", class: "item", target: "_blank"
+                = link_to "'Husky'?", "https://en.wikipedia.org/wiki/Husky", class: "item", target: "_blank"
+            .seven.wide.column
+              %h4.ui.inverted.header Developed By:
+              %p Yaroslav Filyk - Full-Stack Ruby freelancer.
+              %p For more details - check out his #{link_to "website.", "http://yaroslavfilyk.herokuapp.com", target: "_blank"}
